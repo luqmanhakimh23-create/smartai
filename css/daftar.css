@@ -1,0 +1,28 @@
+.page{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:3rem 1.5rem 4rem;display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:start}
+.side-label{font-size:.7rem;font-weight:600;color:var(--cyan);letter-spacing:1.6px;text-transform:uppercase;margin-bottom:.75rem}
+.side-title{font-size:2rem;font-weight:800;line-height:1.2;margin-bottom:1rem}
+.side-desc{color:var(--text-muted);font-size:1rem;line-height:1.7;margin-bottom:1.5rem}
+.side-box{background:rgba(251,191,36,.06);border-left:3px solid var(--yellow);border-radius:0 12px 12px 0;padding:1rem 1.15rem;font-size:.875rem;color:var(--text-muted);margin-bottom:1.5rem}.side-box strong{color:var(--yellow)}
+.side-points{list-style:none;display:flex;flex-direction:column;gap:.75rem}.side-points li{display:flex;gap:.6rem;font-size:.9rem;color:var(--text-muted)}.side-points svg{width:18px;height:18px;color:var(--green);flex-shrink:0}
+.form-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:2rem;box-shadow:var(--shadow)}
+.form-card h1{font-size:1.35rem;font-weight:700;margin-bottom:.35rem}.form-card .sub{font-size:.875rem;color:var(--text-muted);margin-bottom:1.6rem}
+.form-group{margin-bottom:1.1rem}.form-group label{display:block;font-size:.8rem;font-weight:500;color:var(--text-muted);margin-bottom:.4rem}.form-group label .req{color:var(--cyan)}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--input-bg);border:1px solid var(--input-border);border-radius:10px;padding:.75rem 1rem;color:var(--text);font-size:16px;font-family:inherit;outline:none;min-height:48px;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--cyan)}
+.form-group select{appearance:none;cursor:pointer}.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{width:100%;margin-top:.5rem;padding:.95rem 1.5rem;border:none;border-radius:999px;font-weight:600;font-size:1rem;font-family:inherit;cursor:pointer;background:linear-gradient(135deg,var(--cyan),var(--teal));color:#042f2e;min-height:50px}[data-theme=light] .btn-submit{color:#fff}.btn-submit:disabled{opacity:.6}
+.form-note{text-align:center;font-size:.75rem;color:var(--text-dim);margin-top:1rem}
+.success-box{display:none;text-align:center;padding:2.5rem 1rem}.success-box.show{display:block}
+.success-icon{width:56px;height:56px;border-radius:50%;background:rgba(52,211,153,.15);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.5rem}
+.success-box h2{font-size:1.25rem;font-weight:700;margin-bottom:.5rem}.success-box p{color:var(--text-muted);font-size:.9rem;margin-bottom:1.5rem}.success-box a{color:var(--cyan);text-decoration:none;font-weight:600}
+.page{grid-template-columns:1fr;gap:1.5rem;padding:1.5rem 1rem 3rem}
+.side-title{font-size:1.45rem}
+.side-desc{font-size:.92rem}
+.form-card{padding:1.35rem 1.15rem;border-radius:16px}
+.form-card h1{font-size:1.2rem}
+.form-row{grid-template-columns:1fr}
+.page{width:100%;flex:1;position:relative;z-index:1;padding-top:calc(68px + 3rem)}
+.form-card{text-align:left}
+.btn-submit{color:#042f2e}[data-theme=light] .btn-submit{color:#fff}
+@media(max-width:800px){.page{grid-template-columns:1fr;gap:1.5rem;padding:calc(60px + 1.5rem) 1rem 3rem}.side-title{font-size:1.45rem}.side-desc{font-size:.92rem}.form-card{padding:1.35rem 1.15rem;border-radius:16px}.form-card h1{font-size:1.2rem}.form-row{grid-template-columns:1fr}}
