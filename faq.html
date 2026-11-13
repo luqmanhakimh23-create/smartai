@@ -6,7 +6,8 @@
 <title>FAQ — Smart AI</title>
 <meta name="theme-color" content="#070d18"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css"><link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
 <nav class="navbar">
@@ -27,32 +28,50 @@
 <a href="login.html" onclick="closeMenu()">Login</a>
 <a href="daftar.html" class="btn btn-primary" onclick="closeMenu()">Daftar Minat</a>
 </div>
-<main class="sub">
-<section id="faq"><div class="container">
-<div class="section-label reveal">FAQ</div>
-<h2 class="section-title reveal">Pertanyaan yang sering muncul.</h2>
-<div class="faq-list">
-<div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Apakah menjamin profit? <span>▾</span></button><div class="faq-a"><p>Tidak. Fokus pada automation, monitoring, dan risk control.</p></div></div>
-<div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Platform apa? <span>▾</span></button><div class="faq-a"><p>MetaTrader 5 (MT5).</p></div></div>
-<div class="faq-item reveal"><button class="faq-q" onclick="toggleFaq(this)">Cara memulai? <span>▾</span></button><div class="faq-a"><p>Isi formulir di halaman Daftar Minat. Tim menghubungi via WhatsApp.</p></div></div>
-</div></div></section>
-<section id="cara-join"><div class="container">
-<div class="section-label reveal">Cara Bergabung</div>
-<h2 class="section-title reveal">Tiga langkah sederhana.</h2>
-<div class="steps-grid">
-<div class="step reveal"><div class="step-num">01</div><h3>Isi Formulir</h3><p>Buka halaman daftar minat.</p></div>
-<div class="step reveal"><div class="step-num">02</div><h3>Kami Hubungi</h3><p>Tim menjelaskan via WhatsApp.</p></div>
-<div class="step reveal"><div class="step-num">03</div><h3>Pilih & Mulai</h3><p>Lanjutkan setup jika cocok.</p></div>
-</div></div></section>
+<main>
+<section class="section" style="padding-top:calc(var(--nav-h) + 2.5rem)">
+<div class="container">
+<div class="reveal" style="text-align:center;margin-bottom:2.5rem">
+<div class="badge" style="display:inline-flex;margin-bottom:1rem">❓ FAQ</div>
+<h1>Pertanyaan Umum</h1>
+<p style="color:var(--text-muted);max-width:520px;margin:0.75rem auto 0">Jawaban cepat seputar Smart AI Trading Automation.</p>
+</div>
+<div class="reveal" style="max-width:720px;margin:0 auto">
+<details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:.75rem">
+<summary style="font-weight:600;cursor:pointer">Apa itu Smart AI?</summary>
+<p style="margin-top:.75rem;color:var(--text-muted);font-size:.95rem">Smart AI adalah ekosistem trading automation yang menggabungkan EA (Expert Advisor), monitoring real-time, dan kontrol risiko dalam satu platform yang mudah digunakan.</p>
+</details>
+<details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:.75rem">
+<summary style="font-weight:600;cursor:pointer">Apakah modal minimal?</summary>
+<p style="margin-top:.75rem;color:var(--text-muted);font-size:.95rem">Tidak ada modal minimal resmi. Anda bisa mulai sesuai kenyamanan dan risk management pribadi. Tim kami akan membantu setup sesuai profil Anda.</p>
+</details>
+<details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:.75rem">
+<summary style="font-weight:600;cursor:pointer">Bagaimana cara daftar?</summary>
+<p style="margin-top:.75rem;color:var(--text-muted);font-size:.95rem">Klik tombol Daftar Minat, isi formulir, lalu tim kami akan menghubungi via WhatsApp untuk proses selanjutnya.</p>
+</details>
+<details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:.75rem">
+<summary style="font-weight:600;cursor:pointer">Apakah ada jaminan profit?</summary>
+<p style="margin-top:.75rem;color:var(--text-muted);font-size:.95rem">Tidak ada jaminan profit di trading. Smart AI fokus pada automation, monitoring, dan risk control agar proses trading lebih disiplin dan terukur.</p>
+</details>
+<details style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:.75rem">
+<summary style="font-weight:600;cursor:pointer">Support tersedia di mana?</summary>
+<p style="margin-top:.75rem;color:var(--text-muted);font-size:.95rem">Support utama via WhatsApp. Anda juga bisa mengisi formulir Daftar Minat untuk dihubungi kembali.</p>
+</details>
+</div>
+<div class="reveal" style="text-align:center;margin-top:2.5rem">
+<a href="daftar.html" class="btn btn-primary">Daftar Minat Sekarang →</a>
+</div>
+</div>
+</section>
 </main>
-<footer>
-<div class="footer-grid">
+<footer class="footer">
+<div class="footer-inner">
 <div><a href="index.html" class="logo">SMART<span>AI</span></a><p style="color:var(--text-muted);font-size:.85rem;margin-top:.8rem">Ekosistem trading automation.</p></div>
 <div class="footer-col"><h4>Produk</h4><a href="produk.html">EA Trading</a><a href="produk.html">Copy Trade</a></div>
 <div class="footer-col"><h4>Perusahaan</h4><a href="video.html">Video</a><a href="faq.html">FAQ</a></div>
 <div class="footer-col"><h4>Dukungan</h4><a href="daftar.html">Daftar Minat</a><a href="login.html">Login</a><a href="https://wa.me/6282137585596" target="_blank" rel="noopener">WhatsApp</a></div>
 </div>
-<div class="footer-bottom">Risk Disclosure: Trading memiliki risiko kerugian.</div>
+<div class="footer-bottom">© 2025 Smart AI. All rights reserved.</div>
 </footer>
 <a href="https://wa.me/6282137585596" class="wa-float" target="_blank" rel="noopener">WHATSAPP</a>
 <script src="js/site.js"></script>
