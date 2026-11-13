@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Login Member Smart AI — akses dashboard monitoring dan sistem trading automation.">
+<meta name="theme-color" content="#070d18">
+<title>Login Member — Smart AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root, [data-theme="dark"] {
+  --bg: #070d18;
+  --bg-elevated: #0c1424;
+  --bg-card: #0f192d;
+  --border: rgba(94, 234, 212, 0.12);
+  --border-strong: rgba(94, 234, 212, 0.22);
+  --cyan: #2dd4bf;
+  --teal: #14b8a6;
+  --green: #34d399;
+  --red: #f87171;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --yellow: #fbbf24;
+  --input-bg: rgba(255, 255, 255, 0.03);
+  --input-border: rgba(255, 255, 255, 0.08);
+  --nav-bg: rgba(7, 13, 24, 0.88);
+  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+}
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.14);
+  --cyan: #0d9488;
+  --teal: #0f766e;
+  --green: #059669;
+  --red: #dc2626;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  --yellow: #d97706;
+  --input-bg: rgba(15, 23, 42, 0.03);
+  --input-border: rgba(15, 23, 42, 0.1);
+  --nav-bg: rgba(248, 250, 252, 0.92);
+  --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Ambient */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 10%, rgba(45, 212, 191, 0.08), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(167, 139, 250, 0.06), transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Nav */
+.navbar {
+  position: relative;
+  z-index: 10;
+  height: 68px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.logo span { color: var(--cyan); }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.15s, color 0.15s;
+}
+.theme-toggle:hover { border-color: var(--cyan); color: var(--cyan); }
+[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+.btn-back {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.btn-back:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  background: rgba(45, 212, 191, 0.08);
+}
+
+/* Layout */
+.page {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 68px - 56px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Left panel */
+.panel-left {
+  padding-right: 1rem;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cyan);
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  margin-bottom: 1.25rem;
+}
+.panel-left h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 0.85rem;
+}
+.panel-left h1 .grad {
+  background: linear-gradient(135deg, var(--cyan), #5eead4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.panel-left > p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 380px;
+  margin-bottom: 1.75rem;
+  line-height: 1.7;
+}
+.features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.features .icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.18);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--cyan);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Login card */
+.panel-right {
+  display: flex;
+  justify-content: center;
+}
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem 1.85rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+}
+.login-card h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+.login-card .sub {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 1.6rem;
+}
+
+.form-group {
+  margin-bottom: 1.05rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+.input-wrap {
+  position: relative;
+}
+.input-wrap .prefix {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dim);
+  pointer-events: none;
+  display: flex;
+}
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.55rem;
+  border-radius: 12px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.12);
+}
+input::placeholder { color: var(--text-dim); }
+
+.toggle-pass {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 6px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+}
+.toggle-pass:hover { color: var(--text-muted); }
+
+.row-opts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  font-size: 0.82rem;
+}
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+.remember input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--cyan);
+  cursor: pointer;
+}
+.forgot {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 600;
+}
+.forgot:hover { text-decoration: underline; }
+
+.btn-submit {
+  width: 100%;
+  padding: 0.9rem 1.25rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.925rem;
+  background: linear-gradient(135deg, var(--cyan), var(--teal));
+  color: #042f2e;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-submit::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+  transform: skewX(-18deg);
+}
+.btn-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 26px rgba(45, 212, 191, 0.35);
+}
+.btn-submit:hover::after { animation: shine 0.65s ease; }
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 120%; }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 1.35rem 0;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.btn-outline {
+  width: 100%;
+  padding: 0.8rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.btn-outline:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(45, 212, 191, 0.06);
+}
+
+.alert {
+  display: none;
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+.alert.show { display: block; }
+.alert-error {
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  color: var(--red);
+}
+.alert-info {
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.22);
+  color: var(--cyan);
+}
+
+.footer-links {
+  margin-top: 1.35rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+.footer-links a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 600;
+}
+.footer-links a:hover { text-decoration: underline; }
+
+.secure-note {
+  margin-top: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+.secure-note svg { opacity: 0.7; }
+
+/* Site footer */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1.15rem 1.5rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+}
+.site-footer a { color: var(--cyan); text-decoration: none; }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: 1fr;
+    padding: 1.75rem 1.25rem 2.5rem;
+    gap: 2rem;
+  }
+  .panel-left {
+    text-align: center;
+    padding-right: 0;
+  }
+  .panel-left > p { margin-left: auto; margin-right: auto; }
+  .features { align-items: center; }
+  .features li { max-width: 320px; text-align: left; }
+  .navbar { padding: 0 1.15rem; height: 60px; }
+}
+@media (max-width: 420px) {
+  .login-card { padding: 1.5rem 1.2rem; }
+  .row-opts { flex-direction: column; align-items: flex-start; gap: 0.65rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">SMART<span>AI</span></a>
+  <div class="nav-right">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Ganti tema">
+      <svg class="icon-moon" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <svg class="icon-sun" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <a href="index.html" class="btn-back">← Beranda</a>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="panel-left">
+    <div class="badge">Member Area</div>
+    <h1>Masuk ke <span class="grad">dashboard</span><br>Smart AI Anda.</h1>
+    <p>Pantau performa akun, status sistem, dan kelola parameter risiko dari satu tempat.</p>
+    <ul class="features">
+      <li>
+        <span class="icon">◎</span>
+        <span><strong style="color:var(--text)">Live Monitoring</strong><br>Balance, equity, dan daily performance real-time.</span>
+      </li>
+      <li>
+        <span class="icon">◇</span>
+        <span><strong style="color:var(--text)">Risk Control</strong><br>Pantau parameter dan batas risiko sistem Anda.</span>
+      </li>
+      <li>
+        <span class="icon">AI</span>
+        <span><strong style="color:var(--text)">Status EA</strong><br>Cek apakah automation berjalan dengan normal.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="panel-right">
+    <div class="login-card">
+      <h2>Login Member</h2>
+      <p class="sub">Masukkan kredensial akun Smart AI Anda.</p>
+
+      <div class="alert alert-error" id="alert-error"></div>
+      <div class="alert alert-info" id="alert-info"></div>
+
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="email">Email / Username</label>
+          <div class="input-wrap">
+            <span class="prefix">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <input type="email" id="email" name="email" required placeholder="nama@email.com" autocomplete="username">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <span class="prefix">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </span>
+            <input type="password" id="password" name="password" required placeholder="••••••••" autocomplete="current-password">
+            <button type="button" class="toggle-pass" id="toggle-pass" aria-label="Tampilkan password">
+              <svg id="eye-open" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg id="eye-closed" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="display:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="row-opts">
+          <label class="remember">
+            <input type="checkbox" id="remember" name="remember">
+            Ingat saya
+          </label>
+          <a href="#" class="forgot" id="forgot-link">Lupa password?</a>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">Masuk ke Dashboard →</button>
+      </form>
+
+      <div class="divider">atau</div>
+
+      <a href="index.html#daftar" class="btn-outline">
+        Belum punya akun? Daftar minat
+      </a>
+
+      <div class="footer-links">
+        Butuh bantuan? <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">Hubungi via WhatsApp</a>
+      </div>
+
+      <div class="secure-note">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Koneksi aman · Data tidak dibagikan
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <a href="index.html">Smart AI</a> · Risk Disclosure: Trading memiliki risiko kerugian. Informasi ini bukan nasihat investasi.
+</footer>
+
+<script>
+/* Theme */
+const html = document.documentElement;
+const saved = localStorage.getItem('theme');
+if (saved) html.setAttribute('data-theme', saved);
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const n = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', n);
+  localStorage.setItem('theme', n);
+});
+
+/* Toggle password visibility */
+const passInput = document.getElementById('password');
+const togglePass = document.getElementById('toggle-pass');
+const eyeOpen = document.getElementById('eye-open');
+const eyeClosed = document.getElementById('eye-closed');
+togglePass.addEventListener('click', () => {
+  const show = passInput.type === 'password';
+  passInput.type = show ? 'text' : 'password';
+  eyeOpen.style.display = show ? 'none' : 'block';
+  eyeClosed.style.display = show ? 'block' : 'none';
+});
+
+/* Alerts */
+const alertError = document.getElementById('alert-error');
+const alertInfo = document.getElementById('alert-info');
+function showError(msg) {
+  alertInfo.classList.remove('show');
+  alertError.textContent = msg;
+  alertError.classList.add('show');
+}
+function showInfo(msg) {
+  alertError.classList.remove('show');
+  alertInfo.textContent = msg;
+  alertInfo.classList.add('show');
+}
+function hideAlerts() {
+  alertError.classList.remove('show');
+  alertInfo.classList.remove('show');
+}
+
+/* Forgot password */
+document.getElementById('forgot-link').addEventListener('click', (e) => {
+  e.preventDefault();
+  showInfo('Untuk reset password, hubungi tim Smart AI melalui WhatsApp atau formulir daftar minat di beranda.');
+});
+
+/* Login submit — placeholder (siap dihubungkan ke backend) */
+const form = document.getElementById('login-form');
+const submitBtn = document.getElementById('submit-btn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  hideAlerts();
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  if (!email) {
+    showError('Email / username wajib diisi.');
+    document.getElementById('email').focus();
+    return;
+  }
+  if (!password || password.length < 4) {
+    showError('Password minimal 4 karakter.');
+    passInput.focus();
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Memverifikasi...';
+
+  // Simulasi request — ganti dengan endpoint login nyata nanti
+  await new Promise(r => setTimeout(r, 900));
+
+  showInfo('Login member masih dalam pengembangan. Hubungi tim Smart AI untuk mendapatkan akses dashboard.');
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Masuk ke Dashboard →';
+
+  /*
+  // Contoh integrasi backend nantinya:
+  try {
+    const res = await fetch('/api/login.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, remember: document.getElementById('remember').checked })
+    });
+    const data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || 'Login gagal');
+    window.location.href = data.redirect || 'dashboard.html';
+  } catch (err) {
+    showError(err.message || 'Terjadi kesalahan. Coba lagi.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Masuk ke Dashboard →';
+  }
+  */
+});
+</script>
+</body>
+</html>
