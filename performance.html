@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Performance — Smart AI</title>
+<meta name="theme-color" content="#070d18"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+<nav class="navbar">
+<a href="index.html" class="logo">SMART<span>AI</span></a>
+<ul class="nav-links"><li><a href="index.html">Beranda</a></li><li><a href="video.html">Video</a></li><li><a href="kelebihan.html">Kelebihan</a></li><li><a href="produk.html">Produk</a></li><li><a href="performance.html" class="active">Performance</a></li><li><a href="faq.html">FAQ</a></li></ul>
+<div class="nav-actions">
+<button class="theme-toggle" id="theme-toggle" aria-label="Theme">
+<svg class="icon-moon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg class="icon-sun" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg>
+</button>
+<a href="daftar.html" class="btn btn-nav">Daftar Minat</a>
+<a href="login.html" class="btn btn-login">Login</a>
+<button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+<a href="index.html" onclick="closeMenu()">Beranda</a><a href="video.html" onclick="closeMenu()">Video</a><a href="kelebihan.html" onclick="closeMenu()">Kelebihan</a><a href="produk.html" onclick="closeMenu()">Produk</a><a href="performance.html" onclick="closeMenu()">Performance</a><a href="faq.html" onclick="closeMenu()">FAQ</a>
+<a href="login.html" onclick="closeMenu()">Login</a>
+<a href="daftar.html" class="btn btn-primary" onclick="closeMenu()">Daftar Minat</a>
+</div>
+<main>
+<section class="section" style="padding-top:calc(var(--nav-h) + 2.5rem)">
+<div class="container">
+<div class="reveal" style="text-align:center;margin-bottom:2.5rem">
+<div class="badge" style="display:inline-flex;margin-bottom:1rem">📊 Live Performance</div>
+<h1>Performa Real-Time</h1>
+<p style="color:var(--text-muted);max-width:520px;margin:0.75rem auto 0">Pantau equity, balance, dan hasil trading secara transparan.</p>
+</div>
+<div class="reveal" style="background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:2rem">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:.75rem">
+<div>
+<span style="font-size:.75rem;font-weight:600;color:var(--text-muted);letter-spacing:.5px">SMART AI • MONITOR</span>
+<span style="margin-left:.75rem;font-size:.7rem;color:var(--success);font-weight:600">● SYSTEM ACTIVE</span>
+</div>
+<div style="font-size:.8rem;color:var(--cyan);font-weight:600">XAUUSD · LIVE</div>
+</div>
+<div style="border-radius:12px;overflow:hidden;background:#0f192d;aspect-ratio:16/9;margin-bottom:1rem">
+<iframe title="XAUUSD Live Chart" loading="lazy" style="width:100%;height:100%;border:0" src="https://s.tradingview.com/widgetembed/?frameElementId=tv_perf&symbol=OANDA%3AXAUUSD&interval=15&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&toolbarbg=0f192d&studies=%5B%5D&theme=dark&style=1&timezone=Asia%2FJakarta&withdateranges=0&hideideas=1&hidevolume=1&hidelegend=1&studies_overrides=%7B%7D&overrides=%7B%22paneProperties.background%22%3A%22%230f192d%22%2C%22paneProperties.backgroundType%22%3A%22solid%22%2C%22mainSeriesProperties.candleStyle.upColor%22%3A%22%232dd4bf%22%2C%22mainSeriesProperties.candleStyle.downColor%22%3A%22%23f87171%22%2C%22mainSeriesProperties.candleStyle.borderUpColor%22%3A%22%232dd4bf%22%2C%22mainSeriesProperties.candleStyle.borderDownColor%22%3A%22%23f87171%22%2C%22mainSeriesProperties.candleStyle.wickUpColor%22%3A%22%232dd4bf%22%2C%22mainSeriesProperties.candleStyle.wickDownColor%22%3A%22%23f87171%22%2C%22scalesProperties.textColor%22%3A%22%2394a3b8%22%2C%22scalesProperties.lineColor%22%3A%22%231e293b%22%7D&enabled_features=%5B%5D&disabled_features=%5B%22header_widget%22%2C%22left_toolbar%22%2C%22create_volume_indicator_by_default%22%5D&locale=id" allowtransparency="true" allowfullscreen></iframe>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem">
+<div style="background:var(--bg-elevated);border-radius:12px;padding:1rem;text-align:center">
+<div style="font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px">Automation</div>
+<div style="font-size:1.25rem;font-weight:700;color:var(--cyan)">24/5</div>
+</div>
+<div style="background:var(--bg-elevated);border-radius:12px;padding:1rem;text-align:center">
+<div style="font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px">Monitor</div>
+<div style="font-size:1.25rem;font-weight:700;color:var(--cyan)">Live</div>
+</div>
+<div style="background:var(--bg-elevated);border-radius:12px;padding:1rem;text-align:center">
+<div style="font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px">Control</div>
+<div style="font-size:1.25rem;font-weight:700;color:var(--cyan)">Smart</div>
+</div>
+</div>
+</div>
+<div class="reveal" style="text-align:center;margin-top:2rem">
+<a href="daftar.html" class="btn btn-primary">Daftar Minat Sekarang →</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footer-inner">
+<div><a href="index.html" class="logo">SMART<span>AI</span></a><p style="color:var(--text-muted);font-size:.85rem;margin-top:.8rem">Ekosistem trading automation.</p></div>
+<div class="footer-col"><h4>Produk</h4><a href="produk.html">EA Trading</a><a href="produk.html">Copy Trade</a></div>
+<div class="footer-col"><h4>Perusahaan</h4><a href="video.html">Video</a><a href="faq.html">FAQ</a></div>
+<div class="footer-col"><h4>Dukungan</h4><a href="daftar.html">Daftar Minat</a><a href="login.html">Login</a><a href="https://wa.me/6282137585596" target="_blank" rel="noopener">WhatsApp</a></div>
+</div>
+<div class="footer-bottom">© 2025 Smart AI. All rights reserved.</div>
+</footer>
+<a href="https://wa.me/6282137585596" class="wa-float" target="_blank" rel="noopener">WHATSAPP</a>
+<script src="js/site.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>
